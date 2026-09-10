@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaén Sostenible | Eco Store & Marca Local</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --verde-principal: #0F3822;
+            --verde-hoja: #1F7A5C;
+            --verde-brillante: #25D366;
+            --verde-lima: #48A97A;
+            --verde-esmeralda: #2A9D8F;
+            --verde-suave: #EAF5EE;
+            --verde-fondo: #F4F9F5;
+            --bambu-dorado: #D4A359;
+            --bambu-brillante: #E9C46A;
+            --texto-oscuro: #07190F;
+            --blanco: #FFFFFF;
+            --gris-subtitulos: #4A5568;
+            --gris-borde: #E2E8F0;
+            --sombra-card: 0 12px 30px rgba(15, 56, 34, 0.08);
+            --sombra-hover: 0 20px 40px rgba(15, 56, 34, 0.18);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* FONDO REALISTA DE NATURALEZA CON OVERLAY ELEGANTE */
+        body {
+            background: linear-gradient(rgba(244, 249, 245, 0.92), rgba(244, 249, 245, 0.94)),
+                        url('https://images.unsplash.com/photo-1511497584788-876761c119ef?auto=format&fit=crop&w=1920&q=80') center/cover fixed no-repeat;
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        /* BARRA SUPERIOR ELEGANTE EN VERDE ECO */
+        .top-bar {
+            background: linear-gradient(90deg, #07190F 0%, #0F3822 50%, #1F7A5C 100%);
+            color: var(--blanco);
+            text-align: center;
+            padding: 9px 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: 0.3px;
+        }
+
+        .top-bar-tag {
+            background: var(--verde-hoja);
+            color: var(--blanco);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* BANNER OFERTAS CON VERDE ESMERALDA Y BAMBÚ */
+        .flash-sale-banner {
+            background: linear-gradient(90deg, #0F3822 0%, #1F7A5C 50%, #2A9D8F 100%);
+            color: var(--blanco);
+            padding: 12px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .flash-timer { display: flex; align-items: center; gap: 8px; font-weight: 800; }
+        .timer-box { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(4px); padding: 4px 10px; border-radius: 6px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.2); }
+
+        /* NAVBAR PREMIUM */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 6%;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .logo-creative { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-svg-box {
+            width: 46px; height: 46px;
+            background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hoja) 100%);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 16px rgba(31, 122, 92, 0.25);
+        }
+
+        .logo-text-main { font-size: 1.4rem; font-weight: 800; color: var(--verde-principal); line-height: 1; }
+        .logo-text-main span { color: var(--verde-hoja); }
+        .logo-text-sub { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--bambu-dorado); font-weight: 800; }
+
+        .nav-tabs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .tab-btn {
+            background: transparent; border: none; padding: 10px 16px;
+            font-size: 0.92rem; font-weight: 700; color: var(--gris-subtitulos);
+            cursor: pointer; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tab-btn:hover, .tab-btn.active { background-color: var(--verde-suave); color: var(--verde-principal); }
+
+        .cart-btn-temu {
+            background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hoja) 100%);
+            color: var(--blanco); border: none; padding: 10px 22px; border-radius: 30px;
+            font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 6px 20px rgba(31, 122, 92, 0.3);
+            transition: all 0.3s ease;
+        }
+        .cart-btn-temu:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(31, 122, 92, 0.4); }
+        .cart-badge { background: var(--verde-lima); color: var(--blanco); padding: 2px 8px; border-radius: 50%; font-size: 0.8rem; }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* HERO SECTION CON CRISTAL MORFISMO */
+        .hero { padding: 3.5rem 6% 2.5rem; text-align: center; }
+        .hero-badge {
+            background: var(--verde-suave); color: var(--verde-principal); border: 1px solid var(--verde-lima);
+            padding: 6px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;
+            text-transform: uppercase; display: inline-block; margin-bottom: 15px; letter-spacing: 1px;
+        }
+        .hero h1 { font-size: 3rem; color: var(--verde-principal); font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .hero h1 span { color: var(--verde-hoja); }
+        .hero p { color: var(--gris-subtitulos); max-width: 680px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* SECCIÓN DE PRODUCTOS Y TARJETAS */
+        .products-section { padding: 1rem 6% 4rem; max-width: 1300px; margin: 0 auto; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.95); border-radius: 20px; overflow: hidden;
+            border: 1px solid var(--gris-borde); box-shadow: var(--sombra-card);
+            display: flex; flex-direction: column; justify-content: space-between;
+            position: relative; transition: all 0.35s ease;
+            backdrop-filter: blur(10px);
+        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: var(--sombra-hover); border-color: var(--verde-lima); }
+
+        .product-tag {
+            position: absolute; top: 12px; left: 12px; background: var(--verde-principal);
+            color: var(--bambu-brillante); font-size: 0.72rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 1px solid rgba(233, 196, 106, 0.3);
+        }
+
+        .product-img-wrapper { height: 210px; width: 100%; position: relative; background: #f8f8f8; overflow: hidden; }
+        .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .product-img-wrapper img { transform: scale(1.08); }
+
+        .product-watermark {
+            position: absolute; bottom: 10px; right: 10px;
+            background: rgba(15, 56, 34, 0.85); backdrop-filter: blur(4px);
+            color: var(--blanco); padding: 4px 10px; border-radius: 8px; font-size: 0.65rem; font-weight: 800;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .product-details { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .price-row { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 14px; }
+        .price-current { font-size: 1.4rem; font-weight: 800; color: var(--verde-principal); }
+        .price-old { font-size: 0.9rem; color: #94A3B8; text-decoration: line-through; }
+
+        .btn-add, .btn-buy { width: 100%; padding: 11px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer; transition: all 0.25s ease; font-size: 0.88rem; }
+        .btn-add { background: var(--verde-suave); color: var(--verde-principal); border: 1.5px solid var(--verde-hoja); margin-bottom: 8px; }
+        .btn-add:hover { background: #D8ECE0; }
+        .btn-buy { background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hoja) 100%); color: var(--blanco); box-shadow: 0 4px 12px rgba(31, 122, 92, 0.25); }
+        .btn-buy:hover { opacity: 0.95; transform: scale(1.01); }
+
+        /* RULETA RECOMPENSAS ELEGANTE */
+        .roulette-box {
+            background: rgba(255, 255, 255, 0.95); border-radius: 28px; padding: 45px 30px; text-align: center;
+            box-shadow: var(--sombra-card); border: 2px dashed var(--verde-hoja); max-width: 520px; margin: 40px auto;
+            backdrop-filter: blur(10px);
+        }
+        .wheel {
+            width: 230px; height: 230px; border-radius: 50%; border: 8px solid var(--bambu-dorado);
+            margin: 25px auto;
+            background: conic-gradient(var(--verde-principal) 0deg 90deg, var(--verde-hoja) 90deg 180deg, var(--verde-esmeralda) 180deg 270deg, var(--verde-lima) 270deg 360deg);
+            transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-spin {
+            background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hoja) 100%);
+            color: var(--blanco); border: none; padding: 14px 35px; border-radius: 30px; font-weight: 800; font-size: 1rem; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(15, 56, 34, 0.3); transition: transform 0.2s ease;
+        }
+        .btn-spin:hover { transform: scale(1.05); }
+
+        /* ECO PUNTOS TARJETA VIP */
+        .points-card {
+            background: linear-gradient(135deg, var(--verde-principal) 0%, #05130B 100%);
+            color: var(--blanco); border-radius: 24px; padding: 40px; text-align: center; margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(7, 25, 15, 0.3); border: 1px solid rgba(233, 196, 106, 0.2);
+        }
+
+        /* PESTAÑA NOSOTROS CON MISIÓN Y VISIÓN INTEGRADA */
+        .jaen-container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        .card-historia {
+            background: rgba(255, 255, 255, 0.95); border-radius: 24px; padding: 40px;
+            box-shadow: var(--sombra-card); border-left: 8px solid var(--verde-principal); margin-bottom: 35px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* TARJETAS MISIÓN Y VISIÓN */
+        .grid-mv {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 25px;
+            margin-bottom: 45px;
+        }
+
+        .card-mv {
+            border-radius: 24px;
+            padding: 35px;
+            color: var(--blanco);
+            box-shadow: var(--sombra-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-mv.mision {
+            background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-hoja) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card-mv.vision {
+            background: linear-gradient(135deg, #173E29 0%, var(--verde-esmeralda) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card-mv h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .card-mv p { font-size: 1.02rem; opacity: 0.95; line-height: 1.7; }
+
+        /* DIRECTORES */
+        .directors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 25px; }
+        .director-card {
+            background: rgba(255, 255, 255, 0.95); border-radius: 24px; padding: 35px 25px;
+            box-shadow: var(--sombra-card); border: 1px solid var(--gris-borde); text-align: center;
+            backdrop-filter: blur(10px); transition: transform 0.3s ease;
+        }
+        .director-card:hover { transform: translateY(-6px); }
+
+        .avatar-wrapper { position: relative; width: 140px; height: 140px; margin: 0 auto 20px; }
+        .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 5px solid var(--blanco); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .avatar-ring {
+            position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--bambu-dorado) 0%, var(--verde-hoja) 100%); z-index: -1;
+        }
+
+        /* MODAL CARRITO */
+        .cart-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(7, 25, 15, 0.7); backdrop-filter: blur(8px); display: none; justify-content: flex-end; z-index: 2000;
+        }
+        .cart-modal { background: var(--blanco); width: 100%; max-width: 450px; height: 100%; display: flex; flex-direction: column; padding: 28px; box-shadow: -10px 0 30px rgba(0,0,0,0.2); }
+
+        footer { background: var(--texto-oscuro); color: var(--blanco); text-align: center; padding: 3.5rem 6%; margin-top: 50px; border-top: 3px solid var(--verde-hoja); }
+        footer a { color: var(--verde-lima); text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR SOBRIA -->
+    <div class="top-bar">
+        <span class="top-bar-tag">ENVÍO GRATIS</span>
+        <span>🌱 Jaén Sostenible | Envíos a todo Jaén desde S/ 30.00 | WhatsApp: <strong>977725797</strong></span>
+    </div>
+
+    <!-- BANNER DE OFERTAS VERDE ECO -->
+    <div class="flash-sale-banner">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:1.3rem;">⚡</span>
+            <strong>OFERTAS ECOLÓGICAS DE LA SEMANA</strong>
+        </div>
+        <div class="flash-timer">
+            <span>Termina en:</span>
+            <div class="timer-box">05</div>:
+            <div class="timer-box">42</div>:
+            <div class="timer-box">18</div>
+        </div>
+    </div>
+
+    <!-- NAVBAR PREMIUM CON DESPLAZAMIENTO -->
+    <header class="navbar">
+        <a href="#tienda" class="logo-creative" onclick="switchTab('tienda')">
+            <div class="logo-svg-box">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.4 19 2c1 2 2 4.1 2 7 0 4.8-4.5 9-10 11z"></path>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <span class="logo-text-main">Jaén<span>Sostenible</span></span>
+                <span class="logo-text-sub">MARCA LOCAL & ECO</span>
+            </div>
+        </a>
+
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('tienda')">🛍️ Tienda</button>
+            <button class="tab-btn" onclick="switchTab('recompensas')">🎁 Recompensas</button>
+            <button class="tab-btn" onclick="switchTab('ecopuntos')">♻️ Eco-Puntos</button>
+            <button class="tab-btn" onclick="switchTab('nosotros')">🌿 Nosotros</button>
+            <button class="cart-btn-temu" onclick="toggleCart()">
+                🛒 Carrito <span class="cart-badge" id="cart-count">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 1. TIENDA -->
+    <main id="tab-tienda" class="tab-content active">
+        <section class="hero">
+            <span class="hero-badge">🌎 CUIDEMOS JUNTOS JAÉN</span>
+            <h1>Pequeños cambios. <span>Grandes impactos.</span></h1>
+            <p>Sustituye descartables por productos biodegradables de bambú y alternativas reutilizables de alta durabilidad.</p>
+        </section>
+
+        <section class="products-section">
+            <div class="products-grid" id="products-container"></div>
+        </section>
+    </main>
+
+    <!-- 2. RECOMPENSAS (RULETA) -->
+    <main id="tab-recompensas" class="tab-content">
+        <div class="jaen-container">
+            <div class="roulette-box">
+                <h2 style="color:var(--verde-principal); font-weight:800;">🎁 Ruleta Eco-Premios</h2>
+                <p style="color: var(--gris-subtitulos); margin-top: 6px;">¡Gira diariamente y gana descuentos inmediatos para tus compras en Jaén!</p>
+                <div class="wheel" id="wheel"></div>
+                <button class="btn-spin" onclick="spinWheel()">GIRAR AHORA ⚡</button>
+                <h3 id="wheel-result" style="margin-top: 20px; color: var(--verde-hoja); font-weight:800;"></h3>
+            </div>
+        </div>
+    </main>
+
+    <!-- 3. ECO-PUNTOS Y CANJE -->
+    <main id="tab-ecopuntos" class="tab-content">
+        <div class="jaen-container">
+            <div class="points-card">
+                <h2 style="font-size: 1.8rem; font-weight: 800;">Recicla en Jaén y Gana Productos</h2>
+                <p style="margin: 10px 0; opacity: 0.9;">Acércate a nuestros puntos de acopio con botellas o bambú y suma Eco-Puntos en tu cuenta.</p>
+                <h1 style="color: var(--bambu-brillante); font-size: 3.2rem; margin-top: 10px; font-weight: 800;">120 PTS</h1>
+            </div>
+            <div style="background:rgba(255,255,255,0.95); padding:35px; border-radius:24px; box-shadow:var(--sombra-card); backdrop-filter:blur(10px);">
+                <h3 style="color:var(--verde-principal); margin-bottom:15px; font-weight:800;">Catálogo de Canje:</h3>
+                <ul style="padding-left: 20px; line-height: 2.2; color: var(--texto-oscuro); font-weight:600;">
+                    <li>🥤 <strong>100 Puntos:</strong> 1 Cañita de Bambú Gratis[cite: 3]</li>
+                    <li>🪥 <strong>250 Puntos:</strong> 1 Cepillo Biodegradable[cite: 3]</li>
+                    <li>🛍️ <strong>400 Puntos:</strong> 1 Bolsa Ecológica de Algodón[cite: 3]</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- 4. NOSOTROS (CON MISIÓN Y VISIÓN COMPLETA) -->
+    <main id="tab-nosotros" class="tab-content">
+        <div class="jaen-container">
+            <!-- HISTORIA -->
+            <article class="card-historia">
+                <h3 style="color: var(--verde-principal); font-size: 1.8rem; margin-bottom: 12px; font-weight: 800;">Nuestra Historia & Propósito</h3>
+                <p style="color: var(--gris-subtitulos); font-size: 1.05rem;">
+                    Jaén Sostenible emergió de una firme convicción: el futuro de nuestra comunidad depende de las decisiones de consumo que tomamos hoy[cite: 4]. Ante la proliferación desmedida de plásticos de un solo uso en nuestra región, decidimos liderar una alternativa real, recurriendo a la nobleza del bambú y materiales biodegradables[cite: 4].
+                </p>
+            </article>
+
+            <!-- SECCIÓN MISIÓN Y VISIÓN AGREGADA -->
+            <div class="grid-mv">
+                <article class="card-mv mision">
+                    <h3>🎯 Misión</h3>
+                    <p>Transformamos los hábitos de consumo en Jaén mediante la oferta de productos biodegradables de bambú y artículos reutilizables de alta calidad, promoviendo el cuidado ambiental y la conciencia sostenible[cite: 4].</p>
+                </article>
+
+                <article class="card-mv vision">
+                    <h3>👁️ Visión</h3>
+                    <p>Consolidarnos como la marca líder en soluciones biodegradables y productos eco-amigables en el norte peruano, impulsando comunidades más limpias, conscientes y sostenibles[cite: 4].</p>
+                </article>
+            </div>
+
+            <!-- DIRECTORES -->
+            <section style="margin-bottom: 45px; text-align: center;">
+                <h2 style="color: var(--verde-principal); font-size: 2rem; font-weight: 800;">Nuestros Directores</h2>
+                <div class="directors-grid">
+                    <article class="director-card">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-ring"></div>
+                            <img src="https://i.ibb.co/6P0Dngy/burga-adriancen.jpg" alt="Burga Adriancen" class="avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Burga+Adriancen&background=0F3822&color=fff&size=200'">
+                        </div>
+                        <h4 style="font-size:1.3rem; color:var(--verde-principal); font-weight:800;">Burga Adriancen</h4>
+                        <span style="color:var(--verde-hoja); font-weight:800; font-size:0.85rem; display:block; margin:4px 0;">Director de la Empresa</span>
+                        <span style="background:var(--verde-suave); color:var(--verde-principal); padding:4px 14px; border-radius:20px; font-size:0.82rem; font-weight:700;">16 Años</span>
+                    </article>
+
+                    <article class="director-card">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-ring"></div>
+                            <img src="https://i.ibb.co/yP30L1b/briana-guevara.jpg" alt="Briana Guevara" class="avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Briana+Guevara&background=1F7A5C&color=fff&size=200'">
+                        </div>
+                        <h4 style="font-size:1.3rem; color:var(--verde-principal); font-weight:800;">Guevara Briana</h4>
+                        <span style="color:var(--verde-hoja); font-weight:800; font-size:0.85rem; display:block; margin:4px 0;">Directora de la Empresa</span>
+                        <span style="background:var(--verde-suave); color:var(--verde-principal); padding:4px 14px; border-radius:20px; font-size:0.82rem; font-weight:700;">16 Años</span>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- MODAL CARRITO DE COMPRAS -->
+    <div class="cart-modal-overlay" id="cart-modal">
+        <div class="cart-modal">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--gris-borde); padding-bottom:15px;">
+                <h3 style="color:var(--verde-principal); font-weight:800;">🛒 Tu Carrito de Compras</h3>
+                <button onclick="toggleCart()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--gris-subtitulos);">✕</button>
+            </div>
+            <div id="cart-items" style="flex-grow:1; overflow-y:auto; margin:20px 0;"></div>
+            <div style="border-top: 1px solid var(--gris-borde); padding-top: 15px;">
+                <div style="display:flex; justify-content:space-between; font-weight:800; font-size:1.2rem; margin-bottom:15px;">
+                    <span>Total:</span>
+                    <span id="cart-total-price" style="color:var(--verde-principal);">S/ 0.00</span>
+                </div>
+                <input type="text" id="cust-name" placeholder="Tu Nombre Completo *" style="width:100%; padding:11px; border:1px solid #CBD5E1; border-radius:10px; margin-bottom:10px; font-size:0.9rem;">
+                <input type="text" id="cust-address" placeholder="Dirección en Jaén" style="width:100%; padding:11px; border:1px solid #CBD5E1; border-radius:10px; margin-bottom:15px; font-size:0.9rem;">
+                <button onclick="sendWhatsAppOrder()" style="width:100%; background:var(--verde-brillante); color:#fff; padding:15px; border-radius:12px; border:none; font-size:1rem; font-weight:800; cursor:pointer; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+                    💬 Confirmar Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p style="font-weight:700;">🌱 Jaén Sostenible — Construyendo un futuro verde.</p>
+        <p style="margin-top:8px; font-size:0.9rem; opacity:0.8;">Atención WhatsApp: <a href="https://wa.me/51977725797" target="_blank">977725797</a></p>
+    </footer>
+
+    <script>
+        const products = [
+            { id: 1, name: 'Cepillo de Bambú Biodegradable', price: 8.00, oldPrice: 12.00, tag: '33% OFF', category: 'Higiene Personal', img: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=500' },
+            { id: 2, name: 'Pajita Reutilizable Bambú', price: 5.00, oldPrice: 8.00, tag: 'MÁS VENDIDO', category: 'Consumo Responsable', img: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500' },
+            { id: 3, name: 'Bolsa Ecológica de Algodón', price: 12.00, oldPrice: 16.00, tag: 'OFERTA', category: 'Compras', img: 'https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?w=500' },
+            { id: 4, name: 'Tomatodo Reutilizable Eco', price: 22.00, oldPrice: 28.00, tag: 'TOP', category: 'Marca Local', img: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500' },
+            { id: 5, name: 'Gorra Ecológica Institucional', price: 25.00, oldPrice: 30.00, tag: 'NUEVO', category: 'Marca Local', img: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500' },
+            { id: 6, name: 'Tachos Ecológicos para Reciclaje', price: 20.00, oldPrice: 26.00, tag: 'ECO', category: 'Gestión de Residuos', img: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500' },
+            { id: 7, name: 'Jabón Artesanal Cacao & Café Jaén', price: 14.00, oldPrice: 18.00, tag: 'ARTESANAL', category: 'Cuidado Personal', img: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=500' },
+            { id: 8, name: 'Set de Cubiertos Portátiles Bambú', price: 16.00, oldPrice: 22.00, tag: 'HOT', category: 'Consumo Responsable', img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500' }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('jaen_cart')) || [];
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderProducts() {
+            document.getElementById('products-container').innerHTML = products.map(product => `
+                <article class="product-card">
+                    <span class="product-tag">${product.tag}</span>
+                    <div class="product-img-wrapper">
+                        <img src="${product.img}" alt="${product.name}">
+                        <div class="product-watermark">🌱 JaénSostenible</div>
+                    </div>
+                    <div class="product-details">
+                        <div>
+                            <span style="font-size:0.72rem; color:var(--bambu-dorado); font-weight:800; text-transform:uppercase;">${product.category}</span>
+                            <h3 style="font-size:1.02rem; font-weight:700; margin:4px 0 8px; color:var(--texto-oscuro);">${product.name}</h3>
+                        </div>
+                        <div>
+                            <div class="price-row">
+                                <span class="price-current">S/ ${product.price.toFixed(2)}</span>
+                                <span class="price-old">S/ ${product.oldPrice.toFixed(2)}</span>
+                            </div>
+                            <button class="btn-add" onclick="addToCart(${product.id})">🛒 Agregar al Carrito</button>
+                            <button class="btn-buy" onclick="quickBuy(${product.id})">⚡ Comprar Ya</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if (existing) { existing.quantity++; } else { cart.push({ ...product, quantity: 1 }); }
+            saveCart(); updateCartUI(); toggleCart(true);
+        }
+
+        function quickBuy(productId) {
+            cart = [];
+            const product = products.find(p => p.id === productId);
+            cart.push({ ...product, quantity: 1 });
+            saveCart(); updateCartUI(); toggleCart(true);
+        }
+
+        function changeQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+            item.quantity += delta;
+            if (item.quantity <= 0) cart = cart.filter(i => i.id !== productId);
+            saveCart(); updateCartUI();
+        }
+
+        function saveCart() { localStorage.setItem('jaen_cart', JSON.stringify(cart)); }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total-price');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.innerText = totalItems;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align:center; color: var(--gris-subtitulos); margin-top:30px;">Tu carrito está vacío 🛒</p>';
+                cartTotal.innerText = 'S/ 0.00';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px; border-bottom:1px solid var(--gris-borde); padding-bottom:15px;">
+                    <div>
+                        <h4 style="font-size:0.95rem; color:var(--texto-oscuro);">${item.name}</h4>
+                        <p style="font-size:0.85rem; color: var(--gris-subtitulos);">S/ ${item.price.toFixed(2)} x ${item.quantity}</p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <button onclick="changeQuantity(${item.id}, -1)" style="padding:2px 8px; font-weight:bold; border-radius:4px; border:1px solid #ccc; cursor:pointer;">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQuantity(${item.id}, 1)" style="padding:2px 8px; font-weight:bold; border-radius:4px; border:1px solid #ccc; cursor:pointer;">+</button>
+                    </div>
+                </div>
+            `).join('');
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.innerText = `S/ ${totalPrice.toFixed(2)}`;
+        }
+
+        function toggleCart(forceOpen = false) {
+            const modal = document.getElementById('cart-modal');
+            modal.style.display = (forceOpen || modal.style.display !== 'flex') ? 'flex' : 'none';
+        }
+
+        function spinWheel() {
+            const wheel = document.getElementById('wheel');
+            const deg = Math.floor(2000 + Math.random() * 2000);
+            wheel.style.transform = `rotate(${deg}deg)`;
+            setTimeout(() => {
+                document.getElementById('wheel-result').innerText = "🎉 ¡Ganaste 15% OFF en tu pedido!";
+            }, 3000);
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) return;
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            if (!name) { alert("Ingresa tu nombre para realizar el pedido."); return; }
+
+            let message = `Hola *Jaén Sostenible*, deseo realizar el siguiente pedido:\n\n👤 *Cliente:* ${name}\n`;
+            if (address) message += `📍 *Dirección:* ${address}\n`;
+            message += `\n*Detalle del Pedido:*\n`;
+            cart.forEach(item => { message += `• ${item.name} (x${item.quantity}) - S/ ${(item.price * item.quantity).toFixed(2)}\n`; });
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\n*Total a pagar:* S/ ${totalPrice.toFixed(2)}`;
+
+            window.open(`https://wa.me/51977725797?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        renderProducts();
+        updateCartUI();
+    </script>
+</body>
+</html>
